@@ -1,8 +1,8 @@
 import Alamofire
 
-extension AFError {
+public extension AFError {
   
-  var logDescription: String {
+  public var logDescription: String {
     switch self {
       case .explicitlyCancelled:
         return "요청이 명시적으로 취소되었습니다."
@@ -30,7 +30,7 @@ extension AFError {
     }
   }
   
-  var alertDescription: String {
+  public var alertDescription: String {
     switch self {
       case .explicitlyCancelled:
         return "요청이 취소되었어요. 다시 시도해주세요."
