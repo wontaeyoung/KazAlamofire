@@ -4,20 +4,29 @@
 import PackageDescription
 
 let package = Package(
-    name: "KazAlamofire",
-    products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
-        .library(
-            name: "KazAlamofire",
-            targets: ["KazAlamofire"]),
-    ],
-    targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
-        .target(
-            name: "KazAlamofire"),
-        .testTarget(
-            name: "KazAlamofireTests",
-            dependencies: ["KazAlamofire"]),
-    ]
+  name: "KazAlamofire",
+  platforms: [
+    .iOS(.v13)
+  ],
+  products: [
+    // Products define the executables and libraries a package produces, making them visible to other packages.
+    .library(
+      name: "KazAlamofire",
+      targets: ["KazAlamofire"]),
+  ],
+  dependencies: [
+    .package(url: "https://github.com/Alamofire/Alamofire", from: Version(5, 8, 1))
+  ],
+  targets: [
+    // Targets are the basic building blocks of a package, defining a module or a test suite.
+    // Targets can depend on other targets in this package and products from dependencies.
+    .target(
+      name: "KazAlamofire",
+      dependencies: [
+        .product(name: "Alamofire", package: "Alamofire")
+      ]),
+    .testTarget(
+      name: "KazAlamofireTests",
+      dependencies: ["KazAlamofire"]),
+  ]
 )
